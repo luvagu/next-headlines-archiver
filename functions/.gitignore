@@ -1,9 +1,5 @@
 # dependencies
-/node_modules
-
-# misc
-.DS_Store
-*.pem
+node_modules/
 
 # debug
 npm-debug.log*
