@@ -6,7 +6,7 @@ const client = new faunadb.Client({ secret: process.env.FAUNA_SECRET })
 
 const { Collection, Create, Map, Lambda, Var } = faunadb.query
 
-const sanitize = (str) => str.replace(/\s/g, ' ').trim()
+const removeWhitespace = (str) => str.replace(/\s/g, ' ').trim()
 
 const crawler = async (
 	provider,
@@ -31,7 +31,7 @@ const crawler = async (
 
 		const [elH2] = await page.$x(elTitle)
 		const txt = await elH2.getProperty('textContent')
-		const headLineTitle = sanitize(await txt.jsonValue())
+		const headLineTitle = removeWhitespace(await txt.jsonValue())
 
 		const [elImg] = await page.$x(elImage)
 		const src = await elImg.getProperty('src')
@@ -39,7 +39,7 @@ const crawler = async (
 
 		const [elSpan] = await page.$x(elHeadLine)
 		const txt2 = await elSpan.getProperty('textContent')
-		const headLineTxt = sanitize(await txt2.jsonValue())
+		const headLineTxt = removeWhitespace(await txt2.jsonValue())
 
 		await browser.close()
 
