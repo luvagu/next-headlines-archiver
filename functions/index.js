@@ -23,7 +23,7 @@ exports.scheduledCrawler = functions
 				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a',
 				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a/h2',
 				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[1]/a/img',
-				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a/span[2]/strong',
+				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a/span[2]',
 			],
 			[
 				'Fox News',

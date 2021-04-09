@@ -67,10 +67,10 @@ const crawler = async (sitesArr) => {
 
 		await browser.close()
 
-		console.log('data >>>', data)
+		console.log('crawler data.length >>>', data.length)
 		return data
 	} catch (error) {
-		console.error(error)
+		console.error('crawler error >>>', error?.message)
 		return false
 	}
 }
@@ -87,10 +87,10 @@ const saveData = async (entries) => {
 			)
 		)
 
-		console.log('faunadb response >>>', response)
+		console.log('saveData response.length >>>', response.length)
 		return response
 	} catch (error) {
-		console.error(error)
+		console.error('saveData error >>>', error?.message)
 		return null
 	}
 }
