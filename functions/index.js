@@ -30,8 +30,10 @@ exports.scheduledCrawler = functions
 			],
 		])
 
-		if (!headlines.length || headlines.some((val) => val === false))
+		if (!headlines.length || headlines.some((val) => val === false)) {
+			console.log('Saving data to db aborted due to a false headline value')
 			return null
+		}
 
 		return await saveData(headlines)
 	})
