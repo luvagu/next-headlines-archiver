@@ -1,4 +1,7 @@
+'use strict'
+
 const functions = require('firebase-functions')
+
 const { crawler, saveData } = require('./helpers')
 
 const options = {
@@ -8,9 +11,11 @@ const options = {
 
 exports.scheduledCrawler = functions
 	.runWith(options)
+	.region('us-east1')
 	.pubsub
-    .schedule('every 8 hours')
-	.onRun(async () => {
+    .schedule('0 */4 * * *')
+	.timeZone('America/New_York')
+	.onRun(async (context) => {
 		const headlines = await crawler([
 			[
 				'CNN',
