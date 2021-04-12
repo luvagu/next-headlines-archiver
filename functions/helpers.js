@@ -91,7 +91,7 @@ const saveData = async (entries) => {
 		return response
 	} catch (error) {
 		console.error('saveData error >>>', error?.message)
-		return null
+		return false
 	}
 }
 

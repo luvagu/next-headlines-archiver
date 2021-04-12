@@ -18,24 +18,24 @@ exports.scheduledCrawler = functions
 	.onRun(async (context) => {
 		const headlines = await crawler([
 			[
-				'CNN',
-				'https://us.cnn.com/',
-				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a',
-				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a/h2',
-				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[1]/a/img',
-				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a/span[2]',
+				'CNN', // provider
+				'https://us.cnn.com/', // providerUrl
+				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a', // elLink
+				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a/h2', // elTitle
+				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[1]/a/img', // elImage
+				'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a/span[2]', // elHeadLine
 			],
 			[
-				'Fox News',
-				'https://www.foxnews.com/',
-				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a',
-				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/div/span',
-				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/picture/img',
-				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a',
+				'Fox News', // provider
+				'https://www.foxnews.com/', // providerUrl
+				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a', // elLink
+				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/div/span', // elTitle
+				'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/span/picture[2]/img', // elImage
+				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a', // elHeadLine
 			],
 		])
 
-		if (!headlines.length || headlines.some((val) => val === false)) {
+		if (!headlines.length || headlines.some((obj) => obj === false)) {
 			console.log('Saving data to db aborted due to a false headline value')
 			return null
 		}
