@@ -1,0 +1,20 @@
+[debug] [2021-04-13T01:38:50.107Z] ----------------------------------------------------------------------
+[debug] [2021-04-13T01:38:50.108Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\luiav\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2021-04-13T01:38:50.108Z] CLI Version:   9.9.0
+[debug] [2021-04-13T01:38:50.109Z] Platform:      win32
+[debug] [2021-04-13T01:38:50.109Z] Node Version:  v14.15.4
+[debug] [2021-04-13T01:38:50.109Z] Time:          Mon Apr 12 2021 22:38:50 GMT-0300 (Brasilia Standard Time)
+[debug] [2021-04-13T01:38:50.109Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-13T01:38:50.115Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-13T01:38:50.115Z] > authorizing via signed-in user (luiavag@gmail.com)
+[debug] [2021-04-13T01:38:50.115Z] [iam] checking project next-headlines-scraper for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2021-04-13T01:38:50.117Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-04-13T01:38:50.117Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-13T01:38:50.329Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Tue, 13 Apr 2021 01:38:43 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-13T01:38:50.338Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/next-headlines-scraper:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2021-04-13T01:38:51.240Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 13 Apr 2021 01:38:44 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=724","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-13T01:38:51.241Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/next-headlines-scraper/serviceAccounts/next-headlines-scraper@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}

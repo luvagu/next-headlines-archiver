@@ -30,7 +30,7 @@ exports.scheduledCrawler = functions
 				'https://www.foxnews.com/', // providerUrl
 				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a', // elLink
 				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/div/span', // elTitle
-				'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/span/picture[2]/img', // elImage
+				'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/picture/img', // elImage
 				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a', // elHeadLine
 			],
 		])

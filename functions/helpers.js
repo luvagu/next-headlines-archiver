@@ -8,7 +8,7 @@ const faunadb = require('faunadb')
 
 const client = new faunadb.Client({ secret: process.env.FAUNA_SECRET })
 
-const { Collection, Create, Map, Lambda, Var } = faunadb.query
+const { Collection, Create, Map: FMap, Lambda, Var } = faunadb.query
 
 const removeWhitespace = (str) => str.replace(/\s/g, ' ').trim()
 
@@ -78,7 +78,7 @@ const crawler = async (sitesArr) => {
 const saveData = async (entries) => {
 	try {
 		const response = await client.query(
-			Map(
+			FMap(
 				[...entries],
 				Lambda(
 					'data',
