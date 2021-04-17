@@ -30,8 +30,8 @@ export const getLatestNews = async (size = 20) => {
 			)
 		)
 
-		const dataWithRef = data.map(obj => {
-			const newObj = { ...obj.data, ref: obj.ref.id }
+		const dataWithRef = data.map(doc => {
+			const newObj = { ...doc.data, ref: doc.ref.id }
 			return newObj
 		})
 		
