@@ -24,11 +24,18 @@ export const getLatestNews = async (size = 20) => {
 				}),
 				Lambda(
 					['ts', 'provider', 'ref'],
-					Select(['data'], Get(Var('ref')))
+					// Select(['data'], Get(Var('ref')))
+					Get(Var('ref'))
 				)
 			)
 		)
-		return data
+
+		const dataWithRef = data.map(obj => {
+			const newObj = { ...obj.data, ref: obj.ref.id }
+			return newObj
+		})
+		
+		return dataWithRef
 	} catch (error) {
 		console.log('Error: %s', error?.message)
 	}
