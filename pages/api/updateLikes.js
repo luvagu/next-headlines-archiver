@@ -11,8 +11,8 @@ export default async function handler(req, res) {
 	const { ref, likes, userId } = req.body
 
 	try {
-		const updated = await updateDocLikes(ref, likes)
-		return res.status(200).json(updated)
+		const { data } = await updateDocLikes(ref, likes)
+		return res.status(200).json(data.likes)
 	} catch (err) {
 		console.log('Error: %s', error?.message)
 		res.status(500).json({ msg: 'Something went wrong.' })

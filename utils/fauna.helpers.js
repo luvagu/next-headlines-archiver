@@ -4,6 +4,7 @@ const client = new Client({ secret: process.env.NEXT_PUBLIC_FAUNA_SECRET })
 
 const {
 	Call,
+	Collection,
 	Function: Fn,
 	Index,
 	Map: FMap,
@@ -11,7 +12,9 @@ const {
 	Lambda,
 	Match,
 	Paginate,
+	Ref,
 	Select,
+	Update,
 	Var,
 } = query
 
