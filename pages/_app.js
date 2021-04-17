@@ -1,13 +1,14 @@
+import { UserProvider } from '@auth0/nextjs-auth0'
+
 import '../styles/globals.css'
-import { Fragment } from 'react'
 import Navbar from '../components/Navbar'
 
 function App({ Component, pageProps }) {
 	return (
-		<Fragment>
+		<UserProvider>
 			<Navbar />
 			<Component {...pageProps} />
-		</Fragment>
+		</UserProvider>
 	)
 }
 
