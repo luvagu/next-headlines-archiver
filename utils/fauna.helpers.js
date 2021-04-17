@@ -30,12 +30,12 @@ export const getLatestNews = async (size = 20) => {
 			)
 		)
 
-		const dataWithRef = data.map(doc => {
-			const newObj = { ...doc.data, ref: doc.ref.id }
-			return newObj
+		const docsWithRef = data.map(doc => {
+			const newDoc = { ...doc.data, ref: doc.ref.id }
+			return newDoc
 		})
 		
-		return dataWithRef
+		return docsWithRef
 	} catch (error) {
 		console.log('Error: %s', error?.message)
 	}

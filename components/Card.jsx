@@ -12,11 +12,13 @@ function Card({ cardData }) {
 		headLineTxt,
 		headLineTs,
 		likes,
+		ref,
 	} = cardData
 
     const [likesCount, setLikesCount] = useState(likes ? likes : 0)
 
     const handleClick = async (e) => {
+		console.log(ref)
         setLikesCount(likesCount + 1)
     }
 
