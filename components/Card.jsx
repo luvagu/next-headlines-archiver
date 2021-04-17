@@ -18,8 +18,23 @@ function Card({ cardData }) {
     const [likesCount, setLikesCount] = useState(likes ? likes : 0)
 
     const handleClick = async (e) => {
-		console.log(ref)
-        setLikesCount(likesCount + 1)
+		const likesIncremented = likesCount + 1
+		try {
+			const updated = await fetch('/api/updateLikes', {
+				method: 'PUT',
+				body: JSON.stringify({ ref, likes: likesIncremented }),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			
+			if (updated) {
+				console.log(updated)
+				setLikesCount(likesIncremented)
+			}
+		} catch (error) {
+			console.log('Error: %s', error?.message)
+		}
     }
 
 	return (

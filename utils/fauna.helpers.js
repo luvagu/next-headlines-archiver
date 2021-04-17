@@ -63,3 +63,16 @@ export const getNewsByTsRange = async (
 		console.log('Error: %s', error?.message)
 	}
 }
+
+export const updateDocLikes = async (ref, likes,userId) => {
+	try {
+		return await client.query(
+			Update(
+				Ref(Collection('news'), ref),
+				{ data: { likes } }
+			)
+		)
+	} catch (error) {
+		console.log(error)
+	}
+}
