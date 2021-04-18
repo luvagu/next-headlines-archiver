@@ -3,6 +3,6 @@ module.exports = {
 		webpack5: true,
 	},
 	images: {
-		domains: ['a57.foxnews.com', 'cdn.cnn.com', 'static.foxnews.com'],
+		domains: ['s.gravatar.com', 'a57.foxnews.com', 'cdn.cnn.com', 'static.foxnews.com'],
 	},
 }

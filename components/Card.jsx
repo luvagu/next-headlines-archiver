@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useUser } from '@auth0/nextjs-auth0'
+import { useRouter } from 'next/router'
 import { ExternalLinkIcon, RefreshIcon, ThumbUpIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import DateFormat from './DateFormat'
 
-function Card({ cardData }) {
+function Card({ cardData }) {	
 	const {
 		provider,
 		headLineUrl,
@@ -16,25 +18,35 @@ function Card({ cardData }) {
 	} = cardData
 
 	const [isLoading, setIsLoading] = useState(false)
+	const [hasLiked, setHasLiked] = useState(false)
     const [likesCount, setLikesCount] = useState(likes ? likes : 0)
 
+	const { user } = useUser()
+	const router = useRouter()
+
     const handleClick = async (e) => {
+		if (!user) {
+			router.push('/api/auth/login')
+			return
+		}
+
+		if (hasLiked) return
+
 		setIsLoading(true)
-		const likesIncremented = likesCount + 1
 		try {
-			const updated = await fetch('/api/updateLikes', {
+			const updatedLikes = await fetch('/api/updateLikes', {
 				method: 'PUT',
-				body: JSON.stringify({ ref, likes: likesIncremented }),
+				body: JSON.stringify({ ref, userId: user.sub }),
 				headers: {
 					'Content-Type': 'application/json',
 				},
 			})
 
-			const newLikesCount = await updated.json()
+			const newLikesCount = await updatedLikes.json()
 			
 			if (newLikesCount) {
-				console.log('newLikesCount >>>', newLikesCount)
 				setLikesCount(newLikesCount)
+				setHasLiked(true)
 			}
 		} catch (error) {
 			console.log('Error: %s', error?.message)
@@ -79,6 +91,7 @@ function Card({ cardData }) {
 					<button
 						className="flex items-center hover:text-green-600 cursor-pointer"
 						type="button"
+						title="I like this"
 						onClick={handleClick}
 					>
 						<ThumbUpIcon className="mr-1 w-5 h-5 pointer-events-none" />

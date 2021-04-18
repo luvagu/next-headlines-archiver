@@ -1,8 +1,12 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import { useUser } from '@auth0/nextjs-auth0'
 import { ArchiveIcon } from '@heroicons/react/outline'
 import { SearchIcon, UserCircleIcon } from '@heroicons/react/solid'
 
 function Navbar() {
+	const { isLoading, user } = useUser()
+
 	return (
 		<nav className="sticky z-30 top-0 bg-white w-full flex justify-between items-center mx-auto px-8 h-20 shadow-sm">
 			{/* logo */}
@@ -46,15 +50,27 @@ function Navbar() {
 			{/* login */}
 			<div className="flex-initial">
 				<div className="flex justify-end items-center">
-					<button
-						type="button"
-						className="inline-flex items-center relative px-2 border rounded-full hover:shadow-lg"
-					>
-						<div className="pl-1">Sign In</div>
-						<div className="block flex-grow-0 flex-shrink-0 h-10 w-12 pl-2">
-							<UserCircleIcon className="h-full w-full" />
-						</div>
-					</button>
+					{!isLoading && !user && (
+						<Link href='/api/auth/login'>
+							<a className="inline-flex items-center pl-3 border rounded-full hover:shadow-lg">
+								<div>Sign In</div>
+								<div className="ml-1 block flex-grow-0 flex-shrink-0 h-10 w-10">
+									<UserCircleIcon className="h-full w-full" />
+								</div>
+							</a>
+						</Link>
+					)}
+
+					{!isLoading && user && (
+						<Link href='/api/auth/logout'>
+							<a className="inline-flex items-center pl-3 border rounded-full hover:shadow-lg">
+								<div>Sign Out</div>
+								<div className="relative ml-1 block flex-grow-0 flex-shrink-0 h-10 w-10 rounded-full overflow-hidden">
+									<Image src={user?.picture} layout="fill" objectFit="cover" />
+								</div>
+							</a>
+						</Link>
+					)}
 				</div>
 			</div>
 		</nav>

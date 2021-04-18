@@ -4,7 +4,6 @@ const client = new Client({ secret: process.env.NEXT_PUBLIC_FAUNA_SECRET })
 
 const {
 	Call,
-	Collection,
 	Function: Fn,
 	Index,
 	Map: FMap,
@@ -12,9 +11,6 @@ const {
 	Lambda,
 	Match,
 	Paginate,
-	Ref,
-	Select,
-	Update,
 	Var,
 } = query
 
@@ -67,13 +63,10 @@ export const getNewsByTsRange = async (
 	}
 }
 
-export const updateDocLikes = async (ref, likes,userId) => {
+export const updateDocLikes = async (ref, userId) => {
 	try {
 		return await client.query(
-			Update(
-				Ref(Collection('news'), ref),
-				{ data: { likes } }
-			)
+			Call(Fn("updateLikesCount"),  [ref, userId])
 		)
 	} catch (error) {
 		console.log(error)
