@@ -59,10 +59,10 @@ function Card({ cardData }) {
 			<span className="absolute z-10 right-3 top-2 text-sm text-white font-semibold uppercase">
 				&copy; {provider}
 			</span>
-			<div className="relative h-44 w-full text-gray-400">
+			<div className="relative h-48 w-full text-gray-400">
 				<Image
 					layout="fill"
-					objectFit="fit"
+					objectFit="cover"
 					src={headLineImg}
 					alt={headLineTitle}
 				/>

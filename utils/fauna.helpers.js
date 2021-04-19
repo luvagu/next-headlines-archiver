@@ -1,4 +1,5 @@
 import { Client, query } from 'faunadb'
+import { parseJSON, toJSON } from 'faunadb/src/_json'
 
 const client = new Client({ secret: process.env.NEXT_PUBLIC_FAUNA_SECRET })
 
@@ -14,12 +15,13 @@ const {
 	Var,
 } = query
 
-export const getLatestNews = async (size = 20) => {
+export const getLatestNews = async (size = 20, nextPage = null) => {
 	try {
-		const { data } = await client.query(
+		const { after = false, data } = await client.query(
 			FMap(
 				Paginate(Match(Index('news_sort_by_ts_provider_desc')), {
 					size,
+					...(nextPage && { after: nextPage })
 				}),
 				Lambda(
 					['ts', 'provider', 'ref'],
@@ -29,12 +31,10 @@ export const getLatestNews = async (size = 20) => {
 			)
 		)
 
-		const docsWithRef = data.map(doc => {
-			const newDoc = { ...doc.data, ref: doc.ref.id }
-			return newDoc
-		})
-		
-		return docsWithRef
+		// Add doc ref to the doc data
+		const cardsData = data.map((doc) => ({ ...doc.data, ref: doc.ref.id }))
+
+		return { after: toJSON(after), cardsData }
 	} catch (error) {
 		console.log('Error: %s', error?.message)
 	}
@@ -65,9 +65,7 @@ export const getNewsByTsRange = async (
 
 export const updateDocLikes = async (ref, userId) => {
 	try {
-		return await client.query(
-			Call(Fn("updateLikesCount"),  [ref, userId])
-		)
+		return await client.query(Call(Fn('updateLikesCount'), [ref, userId]))
 	} catch (error) {
 		console.log(error)
 	}

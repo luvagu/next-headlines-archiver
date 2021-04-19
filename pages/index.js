@@ -1,10 +1,15 @@
+import { useState } from 'react'
 import { getLatestNews } from '../utils/fauna.helpers'
 import TimelineCards from '../components/TimelineCards'
 import PageContainer from '../components/PageContainer'
 import Metatags from '../components/Metatags'
 
 export const getStaticProps = async () => {
-	const cardsData = await getLatestNews()
+	const { after, cardsData } = await getLatestNews()
+
+	// TimelineCards component accepts data in the following shape:
+	// [ {cardDataLeft}, {cardDataRight}, timestamp ]
+	// Transform cardsData to be compatible with TimelineCards
 	const cardsDataPairs = cardsData.reduce((acc, cv, idx, source) => {
 		if (idx % 2 === 0) {
 			const pairs = source.slice(idx, idx + 2)
@@ -16,18 +21,24 @@ export const getStaticProps = async () => {
 
 	return {
 		props: {
+			// after,
 			cardsDataPairs,
 		},
 	}
 }
 
-function Home({ cardsDataPairs }) {
+function Home({ after, cardsDataPairs }) {
+	const [cardDataEnd, setCardDataEnd] = useState(false)
+
 	return (
 		<PageContainer>
 			<Metatags />
 			{/* timeline middle vertical line */}
 			<div className="border-2 absolute border-opacity-50 border-gray-700 h-full inset-x-1/2 transform -translate-x-1/2" />
-			{cardsDataPairs.length > 0 && cardsDataPairs.map(cardsDataPair => <TimelineCards key={cardsDataPair[2]} cardsDataPair={cardsDataPair} />)}
+			{cardsDataPairs && cardsDataPairs.map(cardsDataPair => 
+				<TimelineCards key={cardsDataPair[2]} cardsDataPair={cardsDataPair} />)}
+
+			{cardDataEnd && 'You have reached the end!'}
 		</PageContainer>
 	)
 }
