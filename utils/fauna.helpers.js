@@ -67,6 +67,21 @@ export const updateDocLikes = async (ref, userId) => {
 	try {
 		return await client.query(Call(Fn('updateLikesCount'), [ref, userId]))
 	} catch (error) {
-		console.log(error)
+		console.log('Error: %s', error?.message)
+	}
+}
+
+export const searhNews = async (terms) => {
+	try {
+		// Must pass a regex pattern in this form (term1|term2|term3|...)
+		const searchRegx = `(${terms.trim().split(' ').join('|')})`
+		const { data } = await client.query(Call(Fn('searchNews'), searchRegx))
+
+		// Add doc ref to the doc data
+		const cardsData = data.map((doc) => ({ ...doc.data, ref: doc.ref.id }))
+
+		return cardsData
+	} catch (error) {
+		console.log('Error: %s', error?.message)
 	}
 }

@@ -1,7 +1,7 @@
 import Card from './Card'
 import DateFormat from './DateFormat'
 
-function TimelineCards({ cardsDataPair }) {
+function HomeTimeline({ cardsDataPair }) {
 	const [cardDataLeft, cardDataRight, timestamp] = cardsDataPair
 	
 	return (
@@ -19,4 +19,4 @@ function TimelineCards({ cardsDataPair }) {
 	)
 }
 
-export default TimelineCards
+export default HomeTimeline
