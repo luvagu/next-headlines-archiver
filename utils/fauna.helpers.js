@@ -15,13 +15,13 @@ const {
 	Var,
 } = query
 
-export const getLatestNews = async (size = 20, nextPage = null) => {
+export const getLatestNews = async (size = 20, nextPage = false) => {
 	try {
 		const { after = false, data } = await client.query(
 			FMap(
 				Paginate(Match(Index('news_sort_by_ts_provider_desc')), {
 					size,
-					...(nextPage && { after: nextPage })
+					...(nextPage && { after: parseJSON(nextPage) })
 				}),
 				Lambda(
 					['ts', 'provider', 'ref'],
@@ -34,7 +34,7 @@ export const getLatestNews = async (size = 20, nextPage = null) => {
 		// Add doc ref to the doc data
 		const cardsData = data.map((doc) => ({ ...doc.data, ref: doc.ref.id }))
 
-		return { after: toJSON(after), cardsData }
+		return { after: after ? toJSON(after) : false, cardsData }
 	} catch (error) {
 		console.log('Error: %s', error?.message)
 	}

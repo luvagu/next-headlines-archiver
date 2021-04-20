@@ -33,7 +33,9 @@ function Card({ cardData }) {
 		if (hasLiked) return
 
 		setIsLoading(true)
+
 		try {
+			// Example data update with api routes
 			const updatedLikes = await fetch('/api/updateLikes', {
 				method: 'PUT',
 				body: JSON.stringify({ ref, userId: user.sub }),
@@ -43,6 +45,8 @@ function Card({ cardData }) {
 			})
 
 			const newLikesCount = await updatedLikes.json()
+
+			// const newLikesCount = await updateDocLikes(ref, user.sub)
 			
 			if (newLikesCount) {
 				setLikesCount(newLikesCount)
@@ -51,6 +55,7 @@ function Card({ cardData }) {
 		} catch (error) {
 			console.log('Error: %s', error?.message)
 		}
+
 		setIsLoading(false)
     }
 

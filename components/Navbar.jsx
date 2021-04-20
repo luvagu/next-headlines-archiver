@@ -52,7 +52,7 @@ function Navbar() {
 				<div className="flex justify-end items-center">
 					{!isLoading && !user && (
 						<Link href='/api/auth/login'>
-							<a className="inline-flex items-center pl-3 border rounded-full hover:shadow-lg">
+							<a className="inline-flex items-center pl-3 border rounded-full hover:shadow-md">
 								<div>Sign In</div>
 								<div className="ml-1 block flex-grow-0 flex-shrink-0 h-10 w-10">
 									<UserCircleIcon className="h-full w-full" />
@@ -63,7 +63,7 @@ function Navbar() {
 
 					{!isLoading && user && (
 						<Link href='/api/auth/logout'>
-							<a className="inline-flex items-center pl-3 border rounded-full hover:shadow-lg">
+							<a className="inline-flex items-center pl-3 border rounded-full hover:shadow-md">
 								<div>Sign Out</div>
 								<div className="relative ml-1 block flex-grow-0 flex-shrink-0 h-10 w-10 rounded-full overflow-hidden">
 									<Image src={user?.picture} layout="fill" objectFit="cover" />
