@@ -31,11 +31,11 @@ function Navbar() {
 	}
 
 	return (
-		<nav className="sticky z-30 top-0 bg-white shadow-sm">
+		<nav className="md:sticky md:z-30 md:top-0 bg-white shadow-sm">
 			<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 divide-y">
 
 				{/* top nav */}
-				<div className="relative flex items-center justify-between h-16">
+				<div className="flex items-center justify-between h-16">
 					{/* logo */}
 					<div className="inline-flex">
 						<Link href='/'>
@@ -56,11 +56,11 @@ function Navbar() {
 					</div>
 
 					{/* search */}
-					<div className="hidden sm:block flex-shrink flex-grow-0 justify-start">
+					<div className="flex flex-shrink flex-grow-0 justify-start">
 						<div className="inline-block">
 							<div className="inline-flex items-center max-w-full">
 								<form 
-									className="flex items-center flex-grow-0 flex-shrink pl-2 relative w-60 border rounded-full px-2 py-1 overflow-hidden focus-within:border-gray-900 focus-within:shadow"
+									className="flex items-center flex-grow-0 flex-shrink pl-2 w-60 border rounded-full px-2 py-1 overflow-hidden focus-within:border-gray-900 focus-within:shadow"
 									onSubmit={startSearch}
 								>
 									<input 
@@ -72,7 +72,7 @@ function Navbar() {
 										onChange={(e) => setSearchTerm(e.target.value)}
 									/>
 									<button 
-										className="flex items-center justify-center relative h-8 w-8 rounded-full" 
+										className="flex items-center justify-center h-8 w-8 rounded-full" 
 										type="submit"
 									>
 										<SearchIcon className="h-5 w-5" />
@@ -111,10 +111,10 @@ function Navbar() {
 				</div>
 
 				{/* filter options */}
-				<div className="flex items-center justify-between h-14">
+				<div className="flex flex-wrap flex-col md:flex-row items-center justify-between md:h-14 py-2 md:py-0">
 
 					{/* timelines by provider */}
-					<div className="flex items-center space-x-4">
+					<div className="flex items-center space-x-4 mb-2 md:mb-0">
 						<div className="flex space-x-2 text-gray-400 items-center text-sm font-medium">
 							<FilterIcon className="h-6 w-6" />
 							<span>Timelines</span>
