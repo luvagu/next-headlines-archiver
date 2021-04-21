@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { getLatestNews } from '../utils/fauna.helpers'
-import HomeTimeline from '../components/HomeTimeline'
+
 import PageContainer from '../components/PageContainer'
 import Metatags from '../components/Metatags'
+import MessageBallon from '../components/MessageBallon'
+import HomeTimeline from '../components/HomeTimeline'
 import LoadMorePages from '../components/LoadMorePages'
 
 // HomeTimeline component accepts data in the following shape:
@@ -61,6 +63,8 @@ function Home({ after, cardsData }) {
 	return (
 		<PageContainer withTimeline>
 			<Metatags />
+
+			<MessageBallon>Headlines timeline</MessageBallon>
 
 			{cardsDataPairs &&
 				cardsDataPairs.map((cardsDataPair) => (
