@@ -6,9 +6,14 @@ import { useUser } from '@auth0/nextjs-auth0'
 import { ArchiveIcon, ArrowCircleRightIcon, CalendarIcon, FilterIcon } from '@heroicons/react/outline'
 import { SearchIcon, UserCircleIcon } from '@heroicons/react/solid'
 
+const today = new Date()
+const month = today.getMonth() + 1
+const MIN_DATE = '2021-04-08'
+const MAX_DATE = `${today.getFullYear()}-${month < 10 ? `0${month}` : month}-${today.getDate()}`
+
 function Navbar() {
 	const [searchTerm, setSearchTerm] = useState('')
-	const [dateRange, setDateRange] = useState({ from: '2021-04-08', to: '' })
+	const [dateRange, setDateRange] = useState({ from: MIN_DATE, to: '' })
 	const { isLoading, user } = useUser()
 	const router = useRouter()
 
@@ -21,11 +26,9 @@ function Navbar() {
 		e.target.search.blur()
 	}
 
-	const getNewsByRange = (e) => {
+	const startNewsByRange = (e) => {
 		e.preventDefault()
 	}
-
-	console.log(dateRange)
 
 	return (
 		<nav className="sticky z-30 top-0 bg-white shadow-sm">
@@ -109,6 +112,7 @@ function Navbar() {
 
 				{/* filter options */}
 				<div className="flex items-center justify-between h-14">
+
 					{/* timelines by provider */}
 					<div className="flex items-center space-x-4">
 						<div className="flex space-x-2 text-gray-400 items-center text-sm font-medium">
@@ -126,7 +130,7 @@ function Navbar() {
 					</div>
 					
 					{/* timelines by date range */}
-					<form className="flex items-center space-x-2" onSubmit={getNewsByRange}>
+					<form className="flex items-center space-x-2" onSubmit={startNewsByRange}>
 						<CalendarIcon className="h-6 w-6 text-gray-400 text-sm font-medium" />
 						
 						<div className="relative">
@@ -137,7 +141,8 @@ function Navbar() {
 								type="date" 
 								name="from" 
 								className="outline-none overflow-hidden block w-full pl-11 py-1 sm:text-sm border border-gray-300 rounded-md focus:border-gray-900 focus:shadow" 
-								min='2021-04-08'
+								min={MIN_DATE}
+								max={MAX_DATE}
 								required
 								onChange={(e) => setDateRange({ ...dateRange, from: e.target.value })}
 							/>
@@ -152,6 +157,7 @@ function Navbar() {
 								name="to" 
 								className="outline-none overflow-hidden block w-full pl-7 py-1 sm:text-sm border border-gray-300 rounded-md focus:border-gray-900 focus:shadow"
 								min={dateRange.from}
+								max={MAX_DATE}
 								required
 								onChange={(e) => setDateRange({ ...dateRange, to: e.target.value })}
 							/>
