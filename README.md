@@ -59,7 +59,7 @@ Several `indexes` were created to enforce `uniqueness`, perform `searches` and `
 
 ## Clonning this repo
 
-If you'd like to clone this repo, you'd first need to setup a firebase `Pub/Sub Cloud Function` for the web scrapper background job (code found in the functions folder). Then open a FaunaDb [account](https://fauna.com/) and setup a database with two collections (news and likes) and get a server key. However, further tweaks are needed to pull the correct data for the various API endpoints, search & sort and likes.
+If you'd like to clone this repo, you'd first need to setup a firebase `Pub/Sub Cloud Function` for the web scrapper background job (code found in the `functions` folder). Then open a FaunaDb [account](https://fauna.com/) and setup a database with two collections (news and likes) and get a server key. However, further tweaks are needed to pull the correct data for the various API endpoints, search & sort and likes. Setup necessary environment variables.
 
 ```bash
 git clone https://github.com/luvagu/next-headlines-archiver.git
