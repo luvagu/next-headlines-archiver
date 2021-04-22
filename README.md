@@ -1,34 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next Headlines Archiver
 
-## Getting Started
+Firebase Functions / Node.js / Puppeteer / FaunaDB / Next.js / Auth0 / Tailwind CSS
 
-First, run the development server:
+> Full Stack `Data Aggregation` app that archives the headlines content from CNN and Fox News on scheduled intervals and allows users to scroll through a news timeline to see how they are reported on these sites.
 
-```bash
-npm run dev
-# or
-yarn dev
+------
+
+## How is data collected and displayed?
+
+> **Firebase Cloud Function - Puppeteer - FaunaDB**
+
+A Firebase `Pub/Sub Cloud Function` is setup to run a background job every hour. This function uses Node.js and [Puppeteer](https://pptr.dev/) to scrape the headlines content from both CNN and Fox and then saves it to FaunaDB using the [FaunaDB Javascript Driver](https://github.com/fauna/faunadb-js).
+
+> **Data Management with FaunaDB**
+
+FaunaDB, the chosen database for this project, is a `transactional database` built in the cloud with a fast and developer friendly API.
+
+The data collected from the web scraper is saved as documents in the `news` Collection with the following shape:
+
+```js
+{
+  "ref": Ref(Collection("news"), "1"), // Fauna specific
+  "ts": 1617917180920000, // Fauna specific
+  "data": {
+    "provider": "CNN or Fox",
+    "headLineUrl": "headLineUrl",
+    "headLineTitle": "headLineTitle",
+    "headLineImg": "headLineImg",
+    "headLineTxt": "headLineTxt",
+    "headLineTs": 1617917167766,
+    "headLineUTCDate": "Thu, 08 Apr 2021 21:26:07 GMT"
+    "likes": 0
+  }
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Several `indexes` were created to enforce `uniqueness`, perform `searches` and `data sorting` as well as `custom functions` to pull the data for different scenarios and `paged` results.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+> **Displaying Data with Next.js**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- The client-side is built with `Next.js`, a framework built on top of `React`, which features `hybrid static & server rendering`. The data is displayed in the form of a timeline with cards shown side by side.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Client-side Features
 
-## Learn More
+- Hybrid pages featuring both `Static & Server Side Rendering` and `SEO`
+- Homepage also features `Incremental Static Regeneration`
+- Server and Client side rendering for search and filters
+- Optimized images
+- Data is displayed in cards over a timeline
+- Uses Tailwind CSS framework for styling
+- Responsive design
+- Progress bar indicator shown on page transitions
+- Search news
+- Filters included by provider or by dates range
+- Cards likes system
+- Only logged in users may like cards once
+- Auth0 for user authentication
 
-To learn more about Next.js, take a look at the following resources:
+## Clonning this repo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+If you'd like to clone this repo, you'd first need to setup a firebase `Pub/Sub Cloud Function` for the web scrapper background job (code found in the functions folder). Then open a FaunaDb [account](https://fauna.com/) and setup a database with two collections (news and likes) and get a server key. However, further tweaks are needed to pull the correct data for the various API endpoints, search & sort and likes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+git clone https://github.com/luvagu/next-headlines-archiver.git
 
-## Deploy on Vercel
+cd next-headlines-archiver
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+See working demo at: 
+
+Enjoy!
