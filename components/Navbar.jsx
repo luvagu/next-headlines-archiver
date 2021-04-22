@@ -93,7 +93,7 @@ function Navbar() {
 						<div className="flex justify-end items-center">
 							{!isLoading && !user && (
 								<Link href="/api/auth/login">
-									<a className="inline-flex items-center pl-3 rounded-full hover:shadow bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white">
+									<a className="inline-flex items-center pl-3 text-sm rounded-full hover:shadow bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white">
 										<div>Sign In</div>
 										<div className="ml-1 block flex-grow-0 flex-shrink-0 h-10 w-10">
 											<UserCircleIcon className="h-full w-full" />
@@ -104,7 +104,7 @@ function Navbar() {
 
 							{!isLoading && user && (
 								<Link href="/api/auth/logout">
-									<a className="inline-flex items-center pl-3 rounded-full bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white">
+									<a className="inline-flex items-center pl-3 text-sm rounded-full bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white">
 										<div>Sign Out</div>
 										<div className="relative ml-1 block flex-grow-0 flex-shrink-0 h-10 w-10 rounded-full overflow-hidden">
 											<Image
@@ -170,7 +170,7 @@ function Navbar() {
 							<input
 								type="date"
 								name="from"
-								className="outline-none overflow-hidden block w-full pl-11 py-1 text-gray-200 sm:text-sm bg-gray-700 border border-gray-800 rounded-md focus:border-gray-900 focus:shadow"
+								className="outline-none overflow-hidden block w-full pl-11 py-1 text-gray-200 text-sm bg-gray-700 border border-gray-800 rounded-md focus:border-gray-900 focus:shadow"
 								min={MIN_DATE}
 								max={MAX_DATE}
 								required
@@ -192,7 +192,7 @@ function Navbar() {
 							<input
 								type="date"
 								name="to"
-								className="outline-none overflow-hidden block w-full pl-7 py-1 text-gray-200 sm:text-sm bg-gray-700 border border-gray-800 rounded-md focus:border-gray-900 focus:shadow"
+								className="outline-none overflow-hidden block w-full pl-7 py-1 text-gray-200 text-sm bg-gray-700 border border-gray-800 rounded-md focus:border-gray-900 focus:shadow"
 								min={dateRange.from}
 								max={MAX_DATE}
 								required
