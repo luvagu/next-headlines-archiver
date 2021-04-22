@@ -1,11 +1,11 @@
 import Card from './Card'
 import DateFormat from './DateFormat'
 
-function HomeTimeline({ cardsDataPair }) {
+function PairsTimeline({ cardsDataPair, flip = false }) {
 	const [cardDataLeft, cardDataRight, timestamp] = cardsDataPair
 	
 	return (
-		<div className="mb-8 flex justify-evenly items-center w-full">
+		<div className={`mb-8 flex justify-evenly items-center w-full ${flip ? 'flex-row-reverse' : ''}`}>
 			{cardDataRight && <Card cardData={cardDataRight} />}
 
 			<div className="z-10 flex items-center order-1 bg-gray-800 shadow-xl w-20 h-20 rounded-full">
@@ -19,4 +19,4 @@ function HomeTimeline({ cardsDataPair }) {
 	)
 }
 
-export default HomeTimeline
+export default PairsTimeline

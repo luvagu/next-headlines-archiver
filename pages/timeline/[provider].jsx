@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import MessageBallon from '../../components/MessageBallon'
 import Metatags from '../../components/Metatags'
 import PageContainer from '../../components/PageContainer'
-import SearchTimeline from '../../components/SearchTimeline'
+import SinglesTimeline from '../../components/SinglesTimeline'
 import LoadMorePages from '../../components/LoadMorePages'
 
 const provierDBName = {
@@ -69,7 +69,10 @@ function TimelineProvider({ after, results }) {
 
     return (
         <PageContainer withTimeline={haveResults}>
-			<Metatags title={`${provierDBName[query.provider]} timeline`} />
+			<Metatags 
+                title={`${provierDBName[query.provider]} timeline`} 
+                description={`News headlines archives of ${provierDBName[query.provider]} network news provider`} 
+            />
 
             <MessageBallon>
                 {haveResults 
@@ -78,7 +81,7 @@ function TimelineProvider({ after, results }) {
                 }
             </MessageBallon>
 
-            {haveResults && <SearchTimeline cardsData={cardsData} />}
+            {haveResults && <SinglesTimeline cardsData={cardsData} />}
 
             {haveResults && 
                 <LoadMorePages

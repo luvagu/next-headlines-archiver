@@ -3,7 +3,7 @@ import { searhNews } from '../../utils/fauna.helpers'
 
 import PageContainer from '../../components/PageContainer'
 import Metatags from '../../components/Metatags'
-import SearchTimeline from '../../components/SearchTimeline'
+import SinglesTimeline from '../../components/SinglesTimeline'
 import MessageBallon from '../../components/MessageBallon'
 
 export const getServerSideProps = async (context) => {
@@ -33,7 +33,7 @@ function SerchResultsPage({ results }) {
                 {haveResults ? 'Showing results' : 'No results found'} for: <span className="text-yellow-400">{query.terms}</span>
             </MessageBallon>
 
-            {haveResults && <SearchTimeline cardsData={results} />}
+            {haveResults && <SinglesTimeline cardsData={results} />}
         </PageContainer>
     )
 }

@@ -1,7 +1,7 @@
 import Card from './Card'
 import DateFormat from './DateFormat'
 
-function SearchTimeline({ cardsData }) {
+function SinglesTimeline({ cardsData }) {
     return cardsData && cardsData.map((cardData, idx) => (
         <div key={cardData.ref} className={`mb-8 flex justify-evenly items-center w-full ${idx % 2 === 1 ? 'flex-row-reverse' : ''}`}>
 			{cardData && <Card cardData={cardData} />}
@@ -17,4 +17,4 @@ function SearchTimeline({ cardsData }) {
     ))
 }
 
-export default SearchTimeline
+export default SinglesTimeline

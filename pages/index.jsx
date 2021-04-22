@@ -4,12 +4,12 @@ import { getLatestNews } from '../utils/fauna.helpers'
 import PageContainer from '../components/PageContainer'
 import Metatags from '../components/Metatags'
 import MessageBallon from '../components/MessageBallon'
-import HomeTimeline from '../components/HomeTimeline'
+import PairsTimeline from '../components/PairsTimeline'
 import LoadMorePages from '../components/LoadMorePages'
 
-// HomeTimeline component accepts data in the following shape:
+// PairsTimeline component accepts data in the following shape:
 // [ {cardDataLeft}, {cardDataRight}, timestamp ]
-// Transform cardsData to be compatible with HomeTimeline
+// Transform cardsData to be compatible with PairsTimeline
 const transformCardsData = (cardsData) =>
 	cardsData.reduce((acc, cv, idx, source) => {
 		if (idx % 2 === 0) {
@@ -68,7 +68,7 @@ function Home({ after, cardsData }) {
 
 			{cardsDataPairs &&
 				cardsDataPairs.map((cardsDataPair) => (
-					<HomeTimeline
+					<PairsTimeline
 						key={cardsDataPair[2]}
 						cardsDataPair={cardsDataPair}
 					/>

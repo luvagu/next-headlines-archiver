@@ -70,24 +70,24 @@ export const getNewsByProvider = async (provider, nextPage = false) => {
 	}
 }
 
-export const getNewsByTsRange = async (
-	from = 0,
-	to = 0,
-	before = null,
-	after = null
-) => {
+export const getNewsByTsRange = async (from = 0, to = 0, prevPage = null, nextPage = null) => {
 	try {
+		const size = 10
+
 		// const paginateOptions = {
 		// 	size: 4,
 		// 	...(before && { before }),
 		// 	...(after && { after }),
 		// }
 
-		const size = 10
-
-		return await client.query(
-			Call(Fn('getNewsByTsRange'), [from, to, size, before, after])
+		const { after = false, data } = await client.query(
+			Call(Fn('getNewsByTsRange'), [from, to, size, prevPage, nextPage ? parseJSON(nextPage) : null])
 		)
+
+		// Add doc ref to the doc data
+		const cardsData = data.map((doc) => ({ ...doc.data, ref: doc.ref.id }))
+
+		return { after: after ? toJSON(after) : false, cardsData }
 	} catch (error) {
 		console.log('Error: %s', error?.message)
 		return null
