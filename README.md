@@ -10,7 +10,7 @@ Firebase Functions / Node.js / Puppeteer / FaunaDB / Next.js / Auth0 / Tailwind 
 
 > **Firebase Cloud Function - Puppeteer - FaunaDB**
 
-A Firebase `Pub/Sub Cloud Function` is setup to run a background job every hour. This function uses Node.js and [Puppeteer](https://pptr.dev/) to scrape the headlines content from both CNN and Fox and then saves it to FaunaDB using the [FaunaDB Javascript Driver](https://github.com/fauna/faunadb-js).
+A Firebase `Pub/Sub Cloud Function` is setup to run a background job every hour. This function uses Node.js and [Puppeteer](https://pptr.dev/) to scrape the headlines content from both CNN and Fox and then saves it to FaunaDB using the [FaunaDB JavaScript Driver](https://github.com/fauna/faunadb-js).
 
 > **Data Management with FaunaDB**
 
