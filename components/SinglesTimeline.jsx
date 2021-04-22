@@ -1,5 +1,5 @@
 import Card from './Card'
-import DateFormat from './DateFormat'
+import IntlDateFormat from './IntlDateFormat'
 
 function SinglesTimeline({ cardsData }) {
     return cardsData && cardsData.map((cardData, idx) => (
@@ -8,7 +8,7 @@ function SinglesTimeline({ cardsData }) {
 
 			<div className="z-10 flex items-center order-1 bg-gray-800 shadow-xl w-20 h-20 rounded-full">
 				<h1 className="mx-auto font-semibold text-xl text-white">
-					<DateFormat timestamp={cardData.headLineTs} options={{ month: 'short', day: 'numeric' }} />
+					<IntlDateFormat timestamp={cardData.headLineTs} options={{ month: 'short', day: 'numeric' }} />
 				</h1>
 			</div>
 

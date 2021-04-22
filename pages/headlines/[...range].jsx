@@ -1,24 +1,13 @@
 import { getNewsByTsRange } from '../../utils/fauna.helpers'
+import { transformCardsData } from '../utils/app.helpers'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+
 import PageContainer from '../../components/PageContainer'
 import Metatags from '../../components/Metatags'
 import MessageBallon from '../../components/MessageBallon'
 import PairsTimeline from '../../components/PairsTimeline'
 import LoadMorePages from '../../components/LoadMorePages'
-
-// PairsTimeline component accepts data in the following shape:
-// [ {cardDataLeft}, {cardDataRight}, timestamp ]
-// Transform cardsData to be compatible with PairsTimeline
-const transformCardsData = (cardsData) =>
-	cardsData.reduce((acc, cv, idx, source) => {
-		if (idx % 2 === 0) {
-			const pairs = source.slice(idx, idx + 2)
-			const timestamp = pairs[0].headLineTs
-			acc.push([...pairs, timestamp])
-		}
-		return acc
-	}, [])
 
 export const getServerSideProps = async (context) => {
     try {
@@ -56,6 +45,8 @@ function HeadlinesByDate({ fromTs, toTs, after, cardsData }) {
 
 	const haveResults = cardsDataPairs && cardsDataPairs.length ? true : false
 
+	// Effect nedded to reload component when
+    // the dynaic route changes and new data is received
 	useEffect(() => {
 		setCardsDataPairs(cardsData)
 		setNextPage(after)
@@ -75,7 +66,7 @@ function HeadlinesByDate({ fromTs, toTs, after, cardsData }) {
 
 	return (
 		<PageContainer withTimeline={haveResults}>
-			<Metatags title={`Headlines from ${from} to ${to}`} />
+			<Metatags title={haveResults ? `Headlines from ${from} to ${to}` : 'No headlines found'} />
 
 			<MessageBallon>
 				{haveResults ? 'Headlines' : 'No headlines found'} {' '}

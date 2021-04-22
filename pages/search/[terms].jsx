@@ -27,7 +27,7 @@ function SerchResultsPage({ results }) {
 
     return (
         <PageContainer withTimeline={haveResults}>
-			<Metatags title={`Search results for: ${query.terms}`} />
+			<Metatags title={haveResults ? `Search results for: ${query.terms}` : 'No results found'} />
 
             <MessageBallon>
                 {haveResults ? 'Showing results' : 'No results found'} for: <span className="text-yellow-400">{query.terms}</span>

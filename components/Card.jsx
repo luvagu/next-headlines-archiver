@@ -3,7 +3,7 @@ import { useUser } from '@auth0/nextjs-auth0'
 import { useRouter } from 'next/router'
 import { ExternalLinkIcon, RefreshIcon, ThumbUpIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
-import DateFormat from './DateFormat'
+import IntlDateFormat from './IntlDateFormat'
 
 function Card({ cardData }) {	
 	const {
@@ -77,7 +77,7 @@ function Card({ cardData }) {
 					{headLineTitle}
 				</h3>
 				<p className="mb-2 text-sm leading-snug tracking-wide text-gray-700">
-					<DateFormat timestamp={headLineTs} />
+					<IntlDateFormat timestamp={headLineTs} />
 				</p>
 				<p className="text-sm leading-snug tracking-wide text-gray-900">
 					{headLineTxt}

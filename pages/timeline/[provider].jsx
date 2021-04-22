@@ -7,17 +7,17 @@ import PageContainer from '../../components/PageContainer'
 import SinglesTimeline from '../../components/SinglesTimeline'
 import LoadMorePages from '../../components/LoadMorePages'
 
-const provierDBName = {
+const slugToDbName = {
     'cnn': 'CNN',
     'fox-news': 'Fox News'
 }
 
 export const getStaticPaths = async () => {
-    // Return a list of possible values for provider in the following shape
+    // Return a list of possible values of news providers in the following shape
     // [
     //     { params: { id: 'ssg-ssr' } },
     // ]
-    const paths = Object.keys(provierDBName).map(provider => ({ params: { provider } }))
+    const paths = Object.keys(slugToDbName).map(provider => ({ params: { provider } }))
 
 	return {
 		paths,
@@ -27,7 +27,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
 	try {
-		const { after, cardsData: results } = await getNewsByProvider(provierDBName[params.provider])
+		const { after, cardsData: results } = await getNewsByProvider(slugToDbName[params.provider])
 
 		return {
 			props: { after, results },
@@ -49,7 +49,8 @@ function TimelineProvider({ after, results }) {
 
     const haveResults = cardsData && cardsData.length ? true : false
 
-    // Effect nedded to reload component if the dynaic route changes
+    // Effect nedded to reload component when
+    // the dynaic route changes and new data is received
     useEffect(() => {
         setCardsData(results)
         setNextPage(after)
@@ -58,7 +59,7 @@ function TimelineProvider({ after, results }) {
     const getNextPage = async (e) => {
 		setIsLoading(true)
 		try {
-			const { after, cardsData: results } = await getNewsByProvider(provierDBName[query.provider], nextPage)
+			const { after, cardsData: results } = await getNewsByProvider(slugToDbName[query.provider], nextPage)
 			setCardsData([ ...cardsData, ...results ])
 			setNextPage(after)
 		} catch (error) {
@@ -70,13 +71,13 @@ function TimelineProvider({ after, results }) {
     return (
         <PageContainer withTimeline={haveResults}>
 			<Metatags 
-                title={`${provierDBName[query.provider]} timeline`} 
-                description={`News headlines archives of ${provierDBName[query.provider]} network news provider`} 
+                title={haveResults ? `${slugToDbName[query.provider]} timeline` : 'Provider not found'} 
+                description={`News headlines archives of ${slugToDbName[query.provider]} network news provider`} 
             />
 
             <MessageBallon>
                 {haveResults 
-                    ? <span className="text-yellow-400">{provierDBName[query.provider]} timeline</span>
+                    ? <span className="text-yellow-400">{slugToDbName[query.provider]} timeline</span>
                     : 'Provider not found'
                 }
             </MessageBallon>

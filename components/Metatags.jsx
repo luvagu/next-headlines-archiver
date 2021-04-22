@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 function Metatags({
-	title = 'Headline archives | Opposite universes 🌎',
+	title = 'Headline archives | Opposite universes 🌎 ?',
 	description = 'A complete Next.js + Firebase Functions + FaunaDB + Auth0 app for archiving news from CNN and Fox News',
 	imageUrl = '',
 }) {

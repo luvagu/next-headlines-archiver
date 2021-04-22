@@ -40,6 +40,7 @@ function Navbar() {
 			<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 divide-y divide-gray-500 divide-opacity-50">
 				{/* top nav */}
 				<div className="flex items-center justify-between h-16">
+
 					{/* logo */}
 					<div className="inline-flex">
 						<Link href="/">
@@ -122,6 +123,7 @@ function Navbar() {
 
 				{/* filter options */}
 				<div className="flex flex-wrap flex-col md:flex-row items-center justify-between md:h-14 py-2 md:py-0">
+					
 					{/* timelines by provider */}
 					<div className="flex items-center space-x-4 mb-2 md:mb-0">
 						<div className="flex space-x-2 text-gray-400 items-center text-sm font-medium">
@@ -174,12 +176,7 @@ function Navbar() {
 								min={MIN_DATE}
 								max={MAX_DATE}
 								required
-								onChange={(e) =>
-									setDateRange({
-										...dateRange,
-										from: e.target.value,
-									})
-								}
+								onChange={(e) => setDateRange({ ...dateRange, from: e.target.value })}
 							/>
 						</div>
 
@@ -196,12 +193,7 @@ function Navbar() {
 								min={dateRange.from}
 								max={MAX_DATE}
 								required
-								onChange={(e) =>
-									setDateRange({
-										...dateRange,
-										to: e.target.value,
-									})
-								}
+								onChange={(e) => setDateRange({ ...dateRange, to: e.target.value })}
 							/>
 						</div>
 

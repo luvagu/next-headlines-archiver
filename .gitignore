@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-/tests
+/local_crawler
 
 # next.js
 /.next/
