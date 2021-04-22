@@ -1,5 +1,5 @@
 import { getNewsByTsRange } from '../../utils/fauna.helpers'
-import { transformCardsData } from '../utils/app.helpers'
+import { transformCardsData } from '../../utils/app.helpers'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 

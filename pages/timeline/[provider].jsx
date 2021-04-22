@@ -71,13 +71,13 @@ function TimelineProvider({ after, results }) {
     return (
         <PageContainer withTimeline={haveResults}>
 			<Metatags 
-                title={haveResults ? `${slugToDbName[query.provider]} timeline` : 'Provider not found'} 
+                title={haveResults ? `${slugToDbName[query.provider]} | Timeline` : 'Provider not found'} 
                 description={`News headlines archives of ${slugToDbName[query.provider]} network news provider`} 
             />
 
             <MessageBallon>
                 {haveResults 
-                    ? <span className="text-yellow-400">{slugToDbName[query.provider]} timeline</span>
+                    ? `${slugToDbName[query.provider]}'s timeline`
                     : 'Provider not found'
                 }
             </MessageBallon>

@@ -61,7 +61,7 @@ function Card({ cardData }) {
 
 	return (
 		<div className="relative order-1 bg-gray-400 rounded-lg shadow-lg w-5/12 md:max-w-xs lg:max-w-md overflow-hidden">
-			<span className="absolute z-10 right-3 top-2 text-sm text-white font-semibold uppercase">
+			<span className="absolute z-10 right-2 top-2 p-1 text-sm text-white font-medium bg-black bg-opacity-50 rounded-md">
 				&copy; {provider}
 			</span>
 			<div className="relative h-48 w-full text-gray-400">

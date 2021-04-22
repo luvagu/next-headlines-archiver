@@ -65,7 +65,7 @@ function Navbar() {
 						<div className="inline-block">
 							<div className="inline-flex items-center max-w-full">
 								<form
-									className="flex items-center flex-grow-0 flex-shrink pl-2 w-60 bg-gray-700 border border-gray-800 rounded-full px-2 py-1 overflow-hidden focus-within:border-gray-900 focus-within:shadow"
+									className="flex items-center flex-grow-0 flex-shrink pl-2 w-60 bg-gray-700 border border-gray-800 rounded-lg px-2 py-1 overflow-hidden focus-within:border-gray-900 focus-within:shadow"
 									onSubmit={startSearch}
 								>
 									<input
