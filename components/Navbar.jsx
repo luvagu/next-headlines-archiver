@@ -36,21 +36,21 @@ function Navbar() {
 	}
 
 	return (
-		<nav className="md:sticky md:z-30 md:top-0 bg-white shadow-sm">
-			<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 divide-y">
+		<nav className="md:sticky md:z-30 md:top-0 bg-gray-800 shadow-sm">
+			<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 divide-y divide-gray-500 divide-opacity-50">
 				{/* top nav */}
 				<div className="flex items-center justify-between h-16">
 					{/* logo */}
 					<div className="inline-flex">
 						<Link href="/">
 							<a>
-								<div className="flex items-center">
+								<div className="flex items-center text-yellow-400">
 									<ArchiveIcon className="h-10 w-10 mr-2" />
 									<div className="hidden md:flex flex-col items-center -space-y-2">
-										<span className="font-semibold text-base tracking-tight">
+										<span className="font-medium text-base tracking-tight">
 											headline
 										</span>
-										<span className="font-semibold text-base tracking-tight">
+										<span className="font-medium text-base tracking-tight">
 											archives
 										</span>
 									</div>
@@ -64,13 +64,13 @@ function Navbar() {
 						<div className="inline-block">
 							<div className="inline-flex items-center max-w-full">
 								<form
-									className="flex items-center flex-grow-0 flex-shrink pl-2 w-60 border rounded-full px-2 py-1 overflow-hidden focus-within:border-gray-900 focus-within:shadow"
+									className="flex items-center flex-grow-0 flex-shrink pl-2 w-60 bg-gray-700 border border-gray-800 rounded-full px-2 py-1 overflow-hidden focus-within:border-gray-900 focus-within:shadow"
 									onSubmit={startSearch}
 								>
 									<input
 										type="search"
 										name="search"
-										className="flex-grow flex-shrink px-3 outline-none overflow-hidden"
+										className="flex-grow flex-shrink px-3 bg-transparent text-gray-200 outline-none overflow-hidden"
 										placeholder="Search headlines"
 										autoComplete="off"
 										onChange={(e) =>
@@ -78,7 +78,7 @@ function Navbar() {
 										}
 									/>
 									<button
-										className="flex items-center justify-center h-8 w-8 rounded-full"
+										className="flex items-center justify-center h-8 w-8 rounded-full text-gray-400 hover:text-white focus:outline-none"
 										type="submit"
 									>
 										<SearchIcon className="h-5 w-5" />
@@ -93,7 +93,7 @@ function Navbar() {
 						<div className="flex justify-end items-center">
 							{!isLoading && !user && (
 								<Link href="/api/auth/login">
-									<a className="inline-flex items-center pl-3 border rounded-full hover:shadow">
+									<a className="inline-flex items-center pl-3 rounded-full hover:shadow bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white">
 										<div>Sign In</div>
 										<div className="ml-1 block flex-grow-0 flex-shrink-0 h-10 w-10">
 											<UserCircleIcon className="h-full w-full" />
@@ -104,7 +104,7 @@ function Navbar() {
 
 							{!isLoading && user && (
 								<Link href="/api/auth/logout">
-									<a className="inline-flex items-center pl-3 border rounded-full hover:shadow">
+									<a className="inline-flex items-center pl-3 rounded-full bg-gray-900 text-gray-300 hover:bg-gray-700 hover:text-white">
 										<div>Sign Out</div>
 										<div className="relative ml-1 block flex-grow-0 flex-shrink-0 h-10 w-10 rounded-full overflow-hidden">
 											<Image
@@ -133,8 +133,8 @@ function Navbar() {
 							<a
 								className={`px-3 py-2 rounded-md text-sm font-medium ${
 									router.asPath === '/timeline/cnn'
-										? 'text-white bg-gray-700'
-										: 'text-gray-700 hover:bg-gray-700 hover:text-white'
+										? 'bg-gray-900 text-white'
+										: 'text-gray-200 hover:bg-gray-700 hover:text-white'
 								}`}
 							>
 								CNN
@@ -145,8 +145,8 @@ function Navbar() {
 							<a
 								className={`px-3 py-2 rounded-md text-sm font-medium ${
 									router.asPath === '/timeline/fox-news'
-										? 'text-white bg-gray-700'
-										: 'text-gray-700 hover:bg-gray-700 hover:text-white'
+										? 'bg-gray-900 text-white'
+										: 'text-gray-200 hover:bg-gray-700 hover:text-white'
 								}`}
 							>
 								Fox News
@@ -163,14 +163,14 @@ function Navbar() {
 
 						<div className="relative">
 							<div className="absolute pl-2 inset-y-0 left-0 flex items-center pointer-events-none">
-								<span className="text-gray-500 sm:text-sm">
+								<span className="text-gray-400 sm:text-sm">
 									From
 								</span>
 							</div>
 							<input
 								type="date"
 								name="from"
-								className="outline-none overflow-hidden block w-full pl-11 py-1 sm:text-sm border border-gray-300 rounded-md focus:border-gray-900 focus:shadow"
+								className="outline-none overflow-hidden block w-full pl-11 py-1 text-gray-200 sm:text-sm bg-gray-700 border border-gray-800 rounded-md focus:border-gray-900 focus:shadow"
 								min={MIN_DATE}
 								max={MAX_DATE}
 								required
@@ -185,14 +185,14 @@ function Navbar() {
 
 						<div className="relative">
 							<div className="absolute pl-2 inset-y-0 left-0 flex items-center pointer-events-none">
-								<span className="text-gray-500 sm:text-sm">
+								<span className="text-gray-400 sm:text-sm">
 									To
 								</span>
 							</div>
 							<input
 								type="date"
 								name="to"
-								className="outline-none overflow-hidden block w-full pl-7 py-1 sm:text-sm border border-gray-300 rounded-md focus:border-gray-900 focus:shadow"
+								className="outline-none overflow-hidden block w-full pl-7 py-1 text-gray-200 sm:text-sm bg-gray-700 border border-gray-800 rounded-md focus:border-gray-900 focus:shadow"
 								min={dateRange.from}
 								max={MAX_DATE}
 								required
@@ -207,7 +207,7 @@ function Navbar() {
 
 						<button
 							type="submit"
-							className="text-gray-400 text-sm font-medium hover:text-gray-900"
+							className="text-gray-400 hover:text-white focus:outline-none text-sm font-medium"
 						>
 							<ArrowCircleRightIcon className="h-6 w-6" />
 						</button>
