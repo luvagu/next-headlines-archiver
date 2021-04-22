@@ -20,7 +20,7 @@ function Navbar() {
 	const startSearch = (e) => {
 		e.preventDefault()
 		if (!searchTerm || searchTerm.length < 3) return
-		router.push(`/search/${searchTerm}`)
+		router.push(`/search/${encodeURIComponent(searchTerm)}`)
 		setSearchTerm('')
 		e.target.reset()
 		e.target.search.blur()
@@ -28,6 +28,8 @@ function Navbar() {
 
 	const startNewsByRange = (e) => {
 		e.preventDefault()
+
+		const { from, to } = dateRange
 	}
 
 	return (
@@ -121,11 +123,11 @@ function Navbar() {
 						</div>
 			
 						<Link href='/timeline/cnn'>
-							<a className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">CNN</a>
+							<a className={`px-3 py-2 rounded-md text-sm font-medium ${router.asPath === '/timeline/cnn' ? 'text-white bg-gray-700' : 'text-gray-700 hover:bg-gray-700 hover:text-white'}`}>CNN</a>
 						</Link>
 						
 						<Link href='/timeline/fox-news'>
-							<a className="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Fox News</a>
+							<a className={`px-3 py-2 rounded-md text-sm font-medium ${router.asPath === '/timeline/fox-news' ? 'text-white bg-gray-700' : 'text-gray-700 hover:bg-gray-700 hover:text-white'}`}>Fox News</a>
 						</Link>
 					</div>
 					

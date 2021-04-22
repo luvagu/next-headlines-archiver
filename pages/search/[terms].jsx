@@ -8,8 +8,8 @@ import MessageBallon from '../../components/MessageBallon'
 
 export const getServerSideProps = async (context) => {
     try {
-        const results = await searhNews(context.query.terms)
-
+        const results = await searhNews(decodeURIComponent(context.query.terms))
+        
         return {
             props: { results }
         }
