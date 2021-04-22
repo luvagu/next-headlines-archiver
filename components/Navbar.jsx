@@ -29,8 +29,10 @@ function Navbar() {
 
 	const startNewsByRange = (e) => {
 		e.preventDefault()
-
 		const { from, to } = dateRange
+		if (!from || !to) return
+		router.push(`/headlines/from/${from}/to/${to}`)
+		e.target.reset()
 	}
 
 	return (
