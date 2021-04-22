@@ -39,7 +39,9 @@ Several `indexes` were created to enforce `uniqueness`, perform `searches` and `
 
 > **Displaying Data with Next.js**
 
-- The client-side is built with `Next.js`, a framework built on top of `React`, which features `hybrid static & server rendering`. The data is displayed in the form of a timeline with cards shown side by side.
+The client-side is built with `Next.js`, a framework built on top of `React`, which features `hybrid static & server rendering`. The data is displayed in the form of a timeline with cards shown side by side.
+
+------
 
 ## Client-side Features
 
