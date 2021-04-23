@@ -8,3 +8,7 @@ yarn-error.log*
 
 # local env files
 .env
+
+# vercel production
+package.json
+package-lock.json

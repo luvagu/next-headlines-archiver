@@ -31,6 +31,7 @@ export const getStaticProps = async ({ params }) => {
 
 		return {
 			props: { after, results },
+            revalidate: 1,
 		}
 	} catch (error) {
 		console.log('Error: %s', error?.message)

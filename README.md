@@ -46,7 +46,7 @@ The client-side is built with `Next.js`, a framework built on top of `React`, wh
 ## Client-side Features
 
 - Hybrid pages featuring both `Static & Server Side Rendering` and `SEO`
-- Homepage also features `Incremental Static Regeneration`
+- Static pages also feature `Incremental Static Regeneration`
 - Server and Client side rendering for search and filters
 - Optimized images
 - Data is displayed in cards over a timeline
