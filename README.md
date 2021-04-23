@@ -71,6 +71,6 @@ cd next-headlines-archiver
 npm run dev
 ```
 
-See working demo at: 
+See working demo at: https://next-headlines-archiver.vercel.app/
 
 Enjoy!
