@@ -1,4 +1,9 @@
-# Next Headlines Archiver
+<p align="center">
+  <a href="https://next-headlines-archiver.vercel.app" target="_blank">
+    <img src="Screenshot.png" height="200">
+    <h1 align="center">Next Headlines Archiver</h1>
+  </a>
+</p>
 
 Firebase Functions / Node.js / Puppeteer / FaunaDB / Next.js / Auth0 / Tailwind CSS
 
@@ -70,7 +75,3 @@ cd next-headlines-archiver
 
 npm run dev
 ```
-
-See working demo at: https://next-headlines-archiver.vercel.app/
-
-Enjoy!
