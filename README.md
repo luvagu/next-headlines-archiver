@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://next-headlines-archiver.vercel.app">
-    <img src="Screenshot.png" height="200">
+    <img src="Screenshot.png" height="220">
     <h1 align="center">Next Headlines Archiver</h1>
   </a>
 </p>
