@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://next-headlines-archiver.vercel.app" target="_blank">
+  <a href="https://next-headlines-archiver.vercel.app">
     <img src="Screenshot.png" height="200">
     <h1 align="center">Next Headlines Archiver</h1>
   </a>
