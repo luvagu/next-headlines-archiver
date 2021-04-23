@@ -5,9 +5,9 @@
   </a>
 </p>
 
-Firebase Functions / Node.js / Puppeteer / FaunaDB / Next.js / Auth0 / Tailwind CSS
+> Firebase Functions / Node.js / Puppeteer / FaunaDB / Next.js / Auth0 / Tailwind CSS
 
-> Full Stack `Data Aggregation` app that archives the headlines content from CNN and Fox News on scheduled intervals and allows users to scroll through a news timeline to see how they are reported on these sites.
+Full Stack `Data Aggregation` app that archives the headlines content from CNN and Fox News on scheduled intervals and allows users to scroll through a news timeline to see how they are reported on these sites.
 
 ------
 
@@ -73,5 +73,16 @@ git clone https://github.com/luvagu/next-headlines-archiver.git
 
 cd next-headlines-archiver
 
+npm install
+
 npm run dev
 ```
+
+Deploy the scheduled crawler after setting up and liking to your firebase project
+
+```bash
+cd functions
+
+npm run deploy
+```
+
