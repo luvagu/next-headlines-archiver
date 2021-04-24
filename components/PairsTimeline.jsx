@@ -6,7 +6,7 @@ function PairsTimeline({ cardsDataPair, flip = false }) {
 	
 	return (
 		<div className={`mb-8 flex justify-evenly items-center w-full ${flip ? 'flex-row-reverse' : ''}`}>
-			{cardDataRight && <Card cardData={cardDataRight} />}
+			{cardDataRight ? <Card cardData={cardDataRight} /> : <div className="order-1 w-5/12 md:max-w-xs lg:max-w-md" />}
 
 			<div className="z-10 flex items-center order-1 bg-gray-800 shadow-xl w-20 h-20 rounded-full">
 				<h1 className="mx-auto font-semibold text-xl text-white">
@@ -14,7 +14,7 @@ function PairsTimeline({ cardsDataPair, flip = false }) {
 				</h1>
 			</div>
 
-			{cardDataLeft && <Card cardData={cardDataLeft} />}
+			{cardDataLeft ? <Card cardData={cardDataLeft} /> : <div className="order-1 w-5/12 md:max-w-xs lg:max-w-md" />}
 		</div>
 	)
 }
