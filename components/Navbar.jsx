@@ -36,7 +36,7 @@ function Navbar() {
 	}
 
 	return (
-		<nav className="md:sticky md:z-30 md:top-0 bg-gray-800 shadow-sm">
+		<nav className="lg:sticky md:z-30 md:top-0 bg-gray-800 shadow-sm">
 			<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 divide-y divide-gray-500 divide-opacity-50">
 				{/* top nav */}
 				<div className="flex items-center justify-between h-16">
