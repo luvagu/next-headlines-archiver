@@ -25,12 +25,19 @@ function SerchResultsPage({ results }) {
     const { query } = useRouter()
     const haveResults = results && results.length ? true : false
 
+    const resCount = results ? results.length : 0
+    const terms = (<span className="text-yellow-400">{query.terms}</span>)
+    const resCountTxt = (<span className="text-yellow-400">{resCount}</span>)
+
     return (
         <PageContainer withTimeline={haveResults}>
 			<Metatags title={haveResults ? `Search results for: ${query.terms}` : 'No results found'} />
 
             <MessageBallon>
-                {haveResults ? 'Showing results' : 'No results found'} for: <span className="text-yellow-400">{query.terms}</span>
+                {haveResults 
+                    ? (<>Showing {resCountTxt} {resCount > 1 ? 'results' : 'result'} for: {terms}</>)
+                    : (<>No results found for: ${terms}</>)
+                }
             </MessageBallon>
 
             {haveResults && <SinglesTimeline cardsData={results} />}

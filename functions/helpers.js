@@ -32,7 +32,7 @@ const crawler = async (sitesArr) => {
 
 			const page = await browser.newPage()
 
-			await page.goto(providerUrl)
+			await page.goto(providerUrl, { waitUntil: 'load', timeout: 60000 })
 
 			const [elA] = await page.$x(elLink)
 			const href = await elA.getProperty('href')
