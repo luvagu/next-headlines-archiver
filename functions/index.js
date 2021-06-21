@@ -13,7 +13,7 @@ exports.scheduledCrawler = functions
 	.runWith(options)
 	.region('us-east1')
 	.pubsub
-    .schedule('0 */2 * * *')
+    .schedule('0 */2 * * *') // scheduled to run every 2 hours
 	.timeZone('America/New_York')
 	.onRun(async (context) => {
 		const headlines = await crawler([
@@ -28,10 +28,10 @@ exports.scheduledCrawler = functions
 			[
 				'Fox News', // provider
 				'https://www.foxnews.com/', // providerUrl
-				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a', // elLink
-				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/div/span', // elTitle
+				'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a', // elLink
+				'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/div/span', // elTitle
 				'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/picture/img', // elImage
-				'//*[@id="wrapper"]/div[2]/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a', // elHeadLine
+				'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a', // elHeadLine
 			],
 		])
 

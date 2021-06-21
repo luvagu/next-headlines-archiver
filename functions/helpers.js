@@ -16,7 +16,8 @@ const crawler = async (sitesArr) => {
 	try {
 		const data = []
 
-		// To test browser locally, install full version of puppeteer and remove the launch() options
+		// To run crawler locally use loacal_crawler version
+		// The launch options below are optimized for firebase
 		const browser = await puppeteer.launch({ 
 			timeout: 60000,
 			args: chromium.args,
@@ -32,7 +33,9 @@ const crawler = async (sitesArr) => {
 
 			const page = await browser.newPage()
 
-			await page.goto(providerUrl, { waitUntil: 'load', timeout: 60000 })
+			await page.goto(providerUrl)
+			// Use these option instead if timeout error persists
+			// await page.goto(providerUrl, { waitUntil: 'load', timeout: 0 })
 
 			const [elA] = await page.$x(elLink)
 			const href = await elA.getProperty('href')
