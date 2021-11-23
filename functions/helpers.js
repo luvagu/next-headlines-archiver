@@ -10,15 +10,15 @@ const client = new faunadb.Client({ secret: process.env.FAUNA_SECRET })
 
 const { Collection, Create, Map: FMap, Lambda, Var } = faunadb.query
 
-const removeWhitespace = (str) => str.replace(/\s/g, ' ').trim()
+const removeWhitespace = str => str.replace(/\s/g, ' ').trim()
 
-const crawler = async (sitesArr) => {
+const crawler = async sitesArr => {
 	try {
 		const data = []
 
 		// To run crawler locally use loacal_crawler version
 		// The launch options below are optimized for firebase
-		const browser = await puppeteer.launch({ 
+		const browser = await puppeteer.launch({
 			timeout: 60000,
 			args: chromium.args,
 			defaultViewport: chromium.defaultViewport,
@@ -27,7 +27,15 @@ const crawler = async (sitesArr) => {
 		})
 
 		for (const site of sitesArr) {
-			const [provider, providerUrl, elLink, elTitle, elImage, elHeadLine] = site
+			const {
+				provider,
+				providerUrl,
+				elLink,
+				elTitle,
+				elImage,
+				elHeadLine,
+				elVideo,
+			} = site
 
 			console.log(`crawling >>> ${provider} at ${providerUrl}`)
 
@@ -46,8 +54,14 @@ const crawler = async (sitesArr) => {
 			const headLineTitle = removeWhitespace(await txt.jsonValue())
 
 			const [elImg] = await page.$x(elImage)
-			const src = await elImg.getProperty('src')
-			const headLineImg = await src.jsonValue()
+			const src = await elImg?.getProperty('src')
+			const [elVid] = await page.$x(elVideo)
+			const poster = await elVid?.getProperty('poster')
+			const headLineImg = src
+				? await src.jsonValue()
+				: poster
+				? await poster.jsonValue()
+				: ''
 
 			const [elSpan] = await page.$x(elHeadLine)
 			const txt2 = await elSpan.getProperty('textContent')
@@ -78,15 +92,12 @@ const crawler = async (sitesArr) => {
 	}
 }
 
-const saveData = async (entries) => {
+const saveData = async entries => {
 	try {
 		const response = await client.query(
 			FMap(
 				[...entries],
-				Lambda(
-					'data',
-					Create(Collection('news'), { data: Var('data') })
-				)
+				Lambda('data', Create(Collection('news'), { data: Var('data') }))
 			)
 		)
 
