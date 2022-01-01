@@ -26,17 +26,16 @@ exports.scheduledCrawler = functions
 				elImage:
 					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[1]/a/img',
 				elHeadLine:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a/span[2]',
-				elVideo:
-					'/html/body/div[7]/section[2]/div[2]/div/div[1]/ul/li[1]/article/div/div[1]/a/video',
+					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a/span[2]/strong',
+				elVideo: null,
 			},
 			{
 				provider: 'Fox News',
 				providerUrl: 'https://www.foxnews.com/',
 				elLink:
-					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a',
+					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a',
 				elTitle:
-					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/div/span',
+					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/div/span',
 				elImage:
 					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/picture/img',
 				elHeadLine:
