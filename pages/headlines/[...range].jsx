@@ -45,7 +45,11 @@ export default function HeadlinesByDate({ fromTs, toTs, after, cardsData }) {
 		setIsLoading(false)
 	}
 
-	const lastElement = useObserveLastElement(isLoading, nextPage, getNextPage)
+	const lastPairElement = useObserveLastElement(
+		isLoading,
+		nextPage,
+		getNextPage
+	)
 
 	return (
 		<PageContainer withTimeline={hasResults}>
@@ -62,9 +66,9 @@ export default function HeadlinesByDate({ fromTs, toTs, after, cardsData }) {
 			</MessageBallon>
 
 			{hasResults &&
-				cardsDataPairs.map(cardsDataPair => (
+				cardsDataPairs.map((cardsDataPair, idx) => (
 					<PairsTimeline
-						ref={lastElement}
+						ref={idx === cardsDataPairs.length - 1 ? lastPairElement : null}
 						key={cardsDataPair[2]}
 						cardsDataPair={cardsDataPair}
 						flip

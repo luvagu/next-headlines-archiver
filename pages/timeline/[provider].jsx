@@ -78,7 +78,7 @@ export default function TimelineProvider({ after, results }) {
 					{cardsData.map((cardData, idx) => (
 						<SinglesTimeline
 							key={cardData.ref}
-							ref={lastElement}
+							ref={idx === cardsData.length - 1 ? lastElement : null}
 							cardData={cardData}
 							idx={idx}
 						/>

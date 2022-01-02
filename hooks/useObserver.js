@@ -12,7 +12,7 @@ export function useObserveLastElement(isLoading, moreNodes, callback) {
 			observer.current = new IntersectionObserver(
 				entries => {
 					if (entries[0].isIntersecting && moreNodes) {
-						console.log('last node is visible')
+						// console.log('last node is visible')
 						callback()
 					}
 				},
