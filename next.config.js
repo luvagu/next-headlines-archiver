@@ -7,6 +7,9 @@ module.exports = {
 			'cdn.cnn.com',
 			'static.foxnews.com',
 			'edition.cnn.com',
+			'imagetesting.chartbeat.com',
+			'ix.cnn.io',
+			'hp.foxnews.com',
 		],
 	},
 }

@@ -1,22 +1,34 @@
+import { forwardRef } from 'react'
+
 import Card from './Card'
-import IntlDateFormat from './IntlDateFormat'
 
-function PairsTimeline({ cardsDataPair, flip = false }) {
+import CircleTimelineDate from './CircleTimelineDate'
+
+const PairsTimeline = forwardRef(({ cardsDataPair, flip = false }, ref) => {
 	const [cardDataLeft, cardDataRight, timestamp] = cardsDataPair
-	
+
 	return (
-		<div className={`mb-8 flex justify-evenly items-center w-full ${flip ? 'flex-row-reverse' : ''}`}>
-			{cardDataRight ? <Card cardData={cardDataRight} /> : <div className="order-1 w-5/12 md:max-w-xs lg:max-w-md" />}
+		<div
+			ref={ref}
+			className={`mb-8 flex justify-evenly items-center w-full ${
+				flip ? 'flex-row-reverse' : ''
+			}`}
+		>
+			{cardDataRight ? (
+				<Card cardData={cardDataRight} />
+			) : (
+				<div className='order-1 w-5/12 md:max-w-xs lg:max-w-md' />
+			)}
 
-			<div className="z-10 flex items-center order-1 bg-gray-800 shadow-xl w-20 h-20 rounded-full">
-				<h1 className="mx-auto font-semibold text-xl text-white">
-					<IntlDateFormat timestamp={timestamp ? timestamp : 0} options={{ month: 'short', day: 'numeric' }} />
-				</h1>
-			</div>
+			<CircleTimelineDate timestamp={timestamp} />
 
-			{cardDataLeft ? <Card cardData={cardDataLeft} /> : <div className="order-1 w-5/12 md:max-w-xs lg:max-w-md" />}
+			{cardDataLeft ? (
+				<Card cardData={cardDataLeft} />
+			) : (
+				<div className='order-1 w-5/12 md:max-w-xs lg:max-w-md' />
+			)}
 		</div>
 	)
-}
+})
 
 export default PairsTimeline

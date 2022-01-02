@@ -7,7 +7,7 @@ import {
 	ThumbUpIcon,
 } from '@heroicons/react/outline'
 import Image from 'next/image'
-import IntlDateFormat from './IntlDateFormat'
+import { formatDate } from '../utils/dates.helper'
 
 function Card({ cardData }) {
 	const {
@@ -64,8 +64,8 @@ function Card({ cardData }) {
 	}
 
 	return (
-		<div className='relative order-1 bg-gray-400 rounded-lg shadow-lg w-5/12 md:max-w-xs lg:max-w-md overflow-hidden'>
-			<span className='absolute z-10 right-2 top-2 p-1 text-sm text-white font-medium bg-black bg-opacity-50 rounded-md'>
+		<div className='relative order-1 bg-gray-800 rounded-lg shadow-lg w-5/12 md:max-w-xs lg:max-w-md overflow-hidden'>
+			<span className='absolute z-10 right-2 top-2 p-1 text-sm text-white font-medium bg-black bg-opacity-75 rounded-md'>
 				&copy; {provider}
 			</span>
 			<div className='relative h-48 w-full text-gray-400'>
@@ -81,7 +81,7 @@ function Card({ cardData }) {
 					{headLineTitle}
 				</h3>
 				<p className='mb-2 text-sm leading-snug tracking-wide text-gray-700'>
-					<IntlDateFormat timestamp={headLineTs} />
+					{formatDate(headLineTs)}
 				</p>
 				<p className='text-sm leading-snug tracking-wide text-gray-900'>
 					{headLineTxt}

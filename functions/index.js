@@ -26,7 +26,7 @@ exports.scheduledCrawler = functions
 				elImage:
 					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[1]/a/img',
 				elHeadLine:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a/span[2]/strong',
+					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a/span[2]',
 				elVideo: null,
 			},
 			{

@@ -33,7 +33,7 @@ export const getLatestNews = async (size = 20, nextPage = false) => {
 		)
 
 		// Add doc ref to the doc data
-		const cardsData = data.map((doc) => ({ ...doc.data, ref: doc.ref.id }))
+		const cardsData = data.map(doc => ({ ...doc.data, ref: doc.ref.id }))
 
 		return { after: after ? toJSON(after) : false, cardsData }
 	} catch (error) {
@@ -49,10 +49,10 @@ export const getNewsByProvider = async (provider, nextPage = false) => {
 				Paginate(
 					Join(
 						Match(Index('news_by_provider'), provider),
-						Index('news_sort_by_ts_desc'),
+						Index('news_sort_by_ts_desc')
 					),
 					{
-						size: 10,
+						size: 20,
 						...(nextPage && { after: parseJSON(nextPage) }),
 					}
 				),
@@ -61,7 +61,7 @@ export const getNewsByProvider = async (provider, nextPage = false) => {
 		)
 
 		// Add doc ref to the doc data
-		const cardsData = data.map((doc) => ({ ...doc.data, ref: doc.ref.id }))
+		const cardsData = data.map(doc => ({ ...doc.data, ref: doc.ref.id }))
 
 		return { after: after ? toJSON(after) : false, cardsData }
 	} catch (error) {
@@ -70,9 +70,14 @@ export const getNewsByProvider = async (provider, nextPage = false) => {
 	}
 }
 
-export const getNewsByTsRange = async (from = 0, to = 0, prevPage = null, nextPage = null) => {
+export const getNewsByTsRange = async (
+	from = 0,
+	to = 0,
+	prevPage = null,
+	nextPage = null
+) => {
 	try {
-		const size = 10
+		const size = 20
 
 		// const paginateOptions = {
 		// 	size: 4,
@@ -81,11 +86,17 @@ export const getNewsByTsRange = async (from = 0, to = 0, prevPage = null, nextPa
 		// }
 
 		const { after = false, data } = await client.query(
-			Call(Fn('getNewsByTsRange'), [from, to, size, prevPage, nextPage ? parseJSON(nextPage) : null])
+			Call(Fn('getNewsByTsRange'), [
+				from,
+				to,
+				size,
+				prevPage,
+				nextPage ? parseJSON(nextPage) : null,
+			])
 		)
 
 		// Add doc ref to the doc data
-		const cardsData = data.map((doc) => ({ ...doc.data, ref: doc.ref.id }))
+		const cardsData = data.map(doc => ({ ...doc.data, ref: doc.ref.id }))
 
 		return { after: after ? toJSON(after) : false, cardsData }
 	} catch (error) {
@@ -103,7 +114,7 @@ export const updateDocLikes = async (ref, userId) => {
 	}
 }
 
-export const searhNews = async (terms) => {
+export const searhNews = async terms => {
 	try {
 		// Must pass a regex pattern in this form (term1|term2|term3|...)
 		const searchRegx = `(${terms.trim().split(' ').join('|')})`
@@ -111,7 +122,7 @@ export const searhNews = async (terms) => {
 		const { data } = await client.query(Call(Fn('searchNews'), searchRegx))
 
 		// Add doc ref to the doc data
-		const cardsData = data.map((doc) => ({ ...doc.data, ref: doc.ref.id }))
+		const cardsData = data.map(doc => ({ ...doc.data, ref: doc.ref.id }))
 
 		return cardsData
 	} catch (error) {
