@@ -35,6 +35,7 @@ const crawler = async sitesArr => {
 				elImage,
 				elHeadLine,
 				elVideo,
+				elPicture,
 			} = site
 
 			console.log(`crawling >>> ${provider} at ${providerUrl}`)
@@ -57,10 +58,14 @@ const crawler = async sitesArr => {
 			const src = await elImg?.getProperty('src')
 			const [elVid] = await page.$x(elVideo)
 			const poster = await elVid?.getProperty('poster')
+			const [elPic] = await page.$x(elPicture)
+			const picture = await elPic?.getProperty('srcset')
 			const headLineImg = src
 				? await src.jsonValue()
 				: poster
 				? await poster.jsonValue()
+				: picture
+				? (await picture.jsonValue()).split(',')[0]
 				: ''
 
 			const [elSpan] = await page.$x(elHeadLine)

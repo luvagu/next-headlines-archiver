@@ -19,15 +19,15 @@ exports.scheduledCrawler = functions
 			{
 				provider: 'CNN',
 				providerUrl: 'https://us.cnn.com/',
-				elLink:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a',
-				elTitle:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a/h2',
+				elLink: '//*[@id="homepage1-zone-1"]/div[1]/div[2]/div/div/a',
+				elTitle: '//*[@id="homepage1-zone-1"]/div[1]/div[2]/div/div/a/h2',
 				elImage:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[1]/a/img',
+					'//*[@id="homepage1-zone-1"]/div[2]/div/div[2]/ul/li[1]/article/div/div[1]/a/img',
 				elHeadLine:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a/span[2]',
-				elVideo: null,
+					'//*[@id="homepage1-zone-1"]/div[2]/div/div[2]/ul/li[1]/article/div/div[2]/h3/a/span[3]/strong',
+				elVideo:
+					'//*[@id="homepage1-zone-1"]/div[2]/div/div[2]/ul/li[1]/article/div/div[1]/a/video',
+				elPicture: null,
 			},
 			{
 				provider: 'Fox News',
@@ -41,6 +41,8 @@ exports.scheduledCrawler = functions
 				elHeadLine:
 					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a',
 				elVideo: null,
+				elPicture:
+					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/span/picture[1]/source[1]',
 			},
 		])
 
