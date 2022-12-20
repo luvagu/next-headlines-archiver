@@ -8,6 +8,7 @@ import {
 } from '@heroicons/react/outline'
 import Image from 'next/image'
 import { formatDate } from '../utils/dates.helper'
+import { normalizeURL } from '../utils/app.helpers'
 
 function Card({ cardData }) {
 	const {
@@ -72,7 +73,7 @@ function Card({ cardData }) {
 				<Image
 					layout='fill'
 					objectFit='cover'
-					src={headLineImg ? headLineImg : '/no-image.webp'}
+					src={headLineImg ? normalizeURL(headLineImg) : '/no-image.webp'}
 					alt={headLineTitle}
 				/>
 			</div>
@@ -90,7 +91,7 @@ function Card({ cardData }) {
 			<div className='flex justify-between items-center px-6 py-4 bg-gray-100'>
 				<a
 					className='flex items-center text-sm hover:text-indigo-600'
-					href={headLineUrl}
+					href={normalizeURL(headLineUrl)}
 					target='_blank'
 				>
 					<span>Story link</span>

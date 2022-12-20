@@ -11,3 +11,11 @@ export const transformCardsData = cardsData =>
 		}
 		return acc
 	}, [])
+
+export const normalizeURL = url => {
+	if (url && url.startsWith('//')) {
+		return 'https:' + url
+	}
+
+	return url
+}

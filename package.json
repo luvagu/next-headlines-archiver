@@ -8,17 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^1.7.0",
+    "@auth0/nextjs-auth0": "^1.9.2",
     "@heroicons/react": "^1.0.6",
-    "faunadb": "^4.5.2",
-    "next": "^12.1.0",
+    "faunadb": "^4.7.1",
+    "next": "^12.3.4",
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.7",
-    "tailwindcss": "^3.0.23"
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4"
   }
 }

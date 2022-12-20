@@ -19,12 +19,14 @@ exports.scheduledCrawler = functions
 			{
 				provider: 'CNN',
 				providerUrl: 'https://us.cnn.com/',
-				elLink: '//*[@id="homepage1-zone-1"]/div[1]/div[2]/div/div/a',
-				elTitle: '//*[@id="homepage1-zone-1"]/div[1]/div[2]/div/div/a/h2',
+				elLink:
+					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a',
+				elTitle:
+					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a/h2',
 				elImage:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[2]/ul/li[1]/article/div/div[1]/a/img',
+					'/html/body/div[7]/section[2]/div[2]/div/div[1]/ul/li[1]/article/div/div[1]/a/img',
 				elHeadLine:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[2]/ul/li[1]/article/div/div[2]/h3/a/span[3]/strong',
+					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a/span[2]/strong',
 				elVideo:
 					'//*[@id="homepage1-zone-1"]/div[2]/div/div[2]/ul/li[1]/article/div/div[1]/a/video',
 				elPicture: null,
