@@ -20,31 +20,31 @@ exports.scheduledCrawler = functions
 				provider: 'CNN',
 				providerUrl: 'https://us.cnn.com/',
 				elLink:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a',
+					'/html/body/div[1]/section[3]/section/div/section/div/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[2]/a',
 				elTitle:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/a/h2',
+					'/html/body/div[1]/section[3]/section/div/section/div/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[2]/a/h2',
 				elImage:
-					'/html/body/div[7]/section[2]/div[2]/div/div[1]/ul/li[1]/article/div/div[1]/a/img',
+					'/html/body/div[1]/section[3]/section/div/section/div/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[3]/div/div/div[1]/a[1]/div/div/div/div[1]/picture/img',
 				elHeadLine:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[1]/ul/li[1]/article/div/div[2]/h3/a/span[2]/strong',
-				elVideo:
-					'//*[@id="homepage1-zone-1"]/div[2]/div/div[2]/ul/li[1]/article/div/div[1]/a/video',
-				elPicture: null,
+					'/html/body/div[1]/section[3]/section/div/section/div/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[3]/div/div/div[1]/a[2]/div/div/span',
+				elVideo: null,
+				elPicture:
+					'/html/body/div[1]/section[3]/section/div/section/div/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[3]/div/div/div[1]/a[1]/div/div/div/div[1]/picture',
 			},
 			{
 				provider: 'Fox News',
 				providerUrl: 'https://www.foxnews.com/',
 				elLink:
-					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a',
+					'//*[@id="wrapper"]/div[2]/div[2]/main/div[1]/div/article/div[1]/a',
 				elTitle:
-					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/div/span',
+					'//*[@id="wrapper"]/div[2]/div[2]/main/div[1]/div/article/div[1]/a/div/span',
 				elImage:
-					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/picture/img',
+					'//*[@id="wrapper"]/div[2]/div[2]/main/div[1]/div/article/div[1]/a/picture/img',
 				elHeadLine:
-					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[2]/header/h2/a',
+					'//*[@id="wrapper"]/div[2]/div[2]/main/div[1]/div/article/div[2]/header/h3/a',
 				elVideo: null,
 				elPicture:
-					'//*[@id="wrapper"]/div/div[2]/div[1]/main/div/div/div[1]/div/article/div[1]/a/span/picture[1]/source[1]',
+					'//*[@id="wrapper"]/div[2]/div[2]/main/div[1]/div/article/div[1]/a/picture',
 			},
 		])
 
