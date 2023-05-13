@@ -10,6 +10,7 @@ module.exports = {
 			'imagetesting.chartbeat.com',
 			'ix.cnn.io',
 			'hp.foxnews.com',
+			'media.cnn.com',
 		],
 	},
 }
